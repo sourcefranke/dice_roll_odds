@@ -1,0 +1,1 @@
+jupyter nbconvert --to html dice_odds.ipynb
