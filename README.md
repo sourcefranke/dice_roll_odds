@@ -11,5 +11,5 @@ pip3 install jupyter
 
 ### Convert notebook to HTML
 ```
-jupyter nbconvert --execute --to html Dice_odds.ipynb
+jupyter nbconvert --execute --to html index.ipynb
 ```
