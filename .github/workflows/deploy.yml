@@ -24,9 +24,7 @@ jobs:
           pip install jupyter nbconvert
 
       - name: Convert notebook to HTML
-        run: |
-          chmod +x /convert_notebook.sh
-          /convert_notebook.sh
+        run: jupyter nbconvert --to html Dice_odds.ipynb
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
