@@ -1,1 +1,1 @@
-jupyter nbconvert --to html dice_odds.ipynb
+jupyter nbconvert --to html Dice_odds.ipynb
