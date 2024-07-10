@@ -11,5 +11,8 @@ pip3 install jupyter
 
 ### Convert notebook to HTML
 ```
-jupyter nbconvert --execute --to html index.ipynb
+jupyter nbconvert --execute --to html index.ipynb --HTMLExporter.theme=dark
 ```
+
+## Result
+The resulting HTML you can watch here: https://sourcefranke.github.io/dice_roll_odds/
