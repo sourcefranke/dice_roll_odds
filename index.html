@@ -7,64 +7,77 @@
     a {
       color: white;
       font-weight: bold;
+      cursor: pointer;
     }
 
     iframe {
-      border: 0
-    }
-
-    .info {
-      padding: 10px;
-      text-align: end;
+      border: 0;
+      width: 100%;
+      height: 100%;
     }
   </style>
+
+  <script>
+    function loadHTML(file) {
+        fetch(file)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('content').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+    }
+
+    loadHTML('home.html');
+  </script>
 </head>
 
 <body style="
     background-color: black;
     color: white;
     font-family: Arial;
-    height: 90vh;
+    height: 95vh;
 ">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
   <div class="container h-100">
-    <div class="row info">
-      <p>
-        Powered by <a href="https://jupyter.org/">Jupyter Notebook</a>
-        /
-        Texts created with the help of <a href="https://chatgpt.com">ChatGPT</a>
-      </p>
-    </div>
-
-    <div class="row h-100" style="overflow-y: auto;">
-      <div class="col-xl-4 col-lg-12">
-        <h1>Dice Roll Odds</h1>
-        <p>Welcome to the Dice Roll Odds Calculator!</p>
-        <p>This tool helps you understand the probabilities of rolling different outcomes with one or more dice.</p>
-        <p>
-          It is especially useful for tabletop gaming, such as Dungeons & Dragons,
-          where rolling dice determines the success of actions.
-        </p>
-        <p>
-          By exploring the various functions and visualizations provided,
-          you can gain insights into the likelihood of different roll results,
-          both with standard rolls and when using mechanics like "advantage".
-        </p>
-        <p>Dive in to see how the math behind your dice rolls works!</p>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" onclick="loadHTML('home.html')" mou>
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="loadHTML('notebooks/dice_roll_odds/content.html')">
+                Dice Roll Odds
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="loadHTML('notebooks/least_common_multiple/content.html')">
+                Least Common Multiply
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="loadHTML('about.html')">
+                About
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
+    </nav>
 
-      <div class="col-xl-8 col-lg-12" style="height: 98%">
-        <iframe src="dice_roll_odds.html" style="width: 100%; height: 100%;"></iframe>
-      </div>
-    </div>
+    <div id="content" class="row h-100" style="overflow-y: auto; padding: 10px">
 
-    <div class="row info">
-      <p>
-        Published on <a href="https://github.com/sourcefranke/dice_roll_odds">GitHub</a>
-        by <b>sourcefranke</b> (Lukas Tietenberg)
-        under the <b>MIT license</b>
-      </p>
     </div>
   </div>
 </body>
