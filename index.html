@@ -16,26 +16,6 @@
       height: 100%;
     }
   </style>
-
-  <script>
-    function loadHTML(file) {
-        fetch(file)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('content').innerHTML = data;
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-            });
-    }
-
-    loadHTML('home.html');
-  </script>
 </head>
 
 <body style="
@@ -45,6 +25,7 @@
     height: 95vh;
 ">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <div class="container h-100">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -52,23 +33,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" onclick="loadHTML('home.html')" mou>
+              <a class="nav-link" aria-current="page" onclick="loadNormalPage('home.md')">
                 Home
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" onclick="loadHTML('notebooks/dice_roll_odds/content.html')">
-                Dice Roll Odds
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="loadHTML('notebooks/least_common_multiple/content.html')">
-                Least Common Multiply
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="loadHTML('about.html')">
-                About
+              <a class="nav-link" onclick="loadNotebookPage('odds/odds.md', 'odds/odds.html');">
+                About the odds
               </a>
             </li>
           </ul>
@@ -81,4 +52,32 @@
     </div>
   </div>
 </body>
+
+<script>
+  async function loadNormalPage(mdFile) {
+      await loadTemplate('normal');
+      await loadMarkdown(mdFile, 'text');
+  }
+
+  async function loadNotebookPage(mdFile, notebookFile) {
+      await loadTemplate('description_notebook');
+      await loadMarkdown(mdFile, 'text');
+      document.getElementById('notebook').src = notebookFile;
+  }
+
+  async function loadTemplate(file) {
+      const response = await fetch('page_templates/' + file + '.html');
+      const text = await response.text();
+      document.getElementById('content').innerHTML = text;
+  }
+
+  async function loadMarkdown(file, id) {
+      const response = await fetch(file);
+      const text = await response.text();
+      const html = marked.parse(text);
+      document.getElementById(id).innerHTML = html;
+  }
+
+  loadNormalPage('home.md');
+</script>
 </html>
