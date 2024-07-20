@@ -9,9 +9,3 @@ It is especially useful for tabletop gaming, such as Dungeons & Dragons, where r
 By exploring the various functions and visualizations provided, you can gain insights into the likelihood of different roll results, both with standard rolls and when using mechanics like "advantage".
 
 Dive in to see how the math behind your dice rolls works!
-
-## About
-
-Published on <a href="https://github.com/sourcefranke/dice_roll_odds">GitHub</a>
-by <b>sourcefranke</b> (Lukas Tietenberg)
-under the <b>MIT license</b>
