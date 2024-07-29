@@ -45,7 +45,7 @@ mdc: true
 Some obligatory stuff, you know ;)
 
 <div class="flex justify-center">
-<div class="text-xs" style="width: 80%">
+<div class="text-xs" style="width: 80%; background: white; padding: 5px; color: black">
 MIT License
 
 Copyright (c) 2024 Lukas Tietenberg
@@ -73,7 +73,7 @@ SOFTWARE.
 <div class="sources">
     <span>
         Source:
-        <a href="https://github.com/sourcefranke/dice_roll_odds?tab=MIT-1-ov-file">
+        <a href="https://github.com/sourcefranke/dice_roll_odds?tab=MIT-1-ov-file" target="_blank">
             https://github.com/sourcefranke/dice_roll_odds
         </a>
     </span>
@@ -87,16 +87,80 @@ SOFTWARE.
 
 ---
 
-<iframe style="height: 100%; width: 100%; border-style: solid; border-width: thin;" src="odds/odds.html"></iframe>
+<iframe style="height: 95%; width: 100%; border-style: solid; border-width: thin;" src="odds/odds.html"></iframe>
 
+<div class="sources">
+    <span>
+        Source:
+        <a href="https://sourcefranke.github.io/jupyter/lab/index.html?path=dice_roll_odds%2Fodds.ipynb" target="_blank">
+            Notebook file
+        </a>
+    </span>
+</div>
 
 ---
 
 ## Cartesian Product
 
-<div class="flex justify-between gap-5">
-<div>text</div>
-<div>
+<br>
+
+In mathematics, the **Cartesian Product** of two sets $A$ and $B$ is the set of all ordered pairs $(a, b)$ where $a$ is an element of $A$ and $b$ is an element of $B$. It is denoted by $A \times B$.
+The Cartesian Product can be formally defined as:
+
+$$
+A \times B = \{ (a, b) \mid a \in A \text{ and } b \in B \}
+$$
+
+<br>
+<br>
+
+If $A = \{1, 2\}$ and $B = \{x, y\}$, the Cartesian Product $A \times B$ would be:
+
+$$
+A \times B = \{ (1, x), (1, y), (2, x), (2, y) \}
+$$
+
+---
+
+## Cartesian Product - Properties
+
+<br>
+
+1. **Non-Commutative**: The Cartesian Product is not commutative, meaning $A \times B \neq B \times A$.<br>For instance, using the sets $A$ and $B$ above, $B \times A$ would be:
+
+$$
+B \times A = \{ (x, 1), (x, 2), (y, 1), (y, 2) \}
+$$
+
+<br>
+
+2. **Associative**: The Cartesian Product is associative, which means <br> $A \times (B \times C)$ is equivalent to $(A \times B) \times C$.
+
+<br>
+
+3. **Distributive Over Union**: The Cartesian Product distributes over the union of sets.<br> Formally, $A \times (B \cup C) = (A \times B) \cup (A \times C)$.
+
+---
+
+## Cartesian Product - Visual Representation
+
+If we consider the sets $A = \{1, 2\}$ and $B = \{x, y\}$, the Cartesian Product can be visually represented on a coordinate grid,
+where each pair $(a, b)$ corresponds to a point in the plane:
+
+$$
+\begin{array}{c|c|c}
+& x & y \\
+\hline
+1 & (1, x) & (1, y) \\
+2 & (2, x) & (2, y) \\
+\end{array}
+$$
+
+This table clearly shows the pairs formed from the Cartesian Product $A \times B$.
+
+---
+
+## Cartesian Product - Code
 
 ````python
 def cartesian(die, number_dice=1, acc_func=lambda x, y: x + y):
@@ -119,9 +183,6 @@ def cartesian(die, number_dice=1, acc_func=lambda x, y: x + y):
 
     return accumulated
 ````
-
-</div>
-</div>
 
 ---
 
